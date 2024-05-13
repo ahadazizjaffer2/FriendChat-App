@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>My Chat App</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+  </head>
+  <body>
+    <nav>
+      <a href="/"><button>Back</button></a>
+    </nav>
+    <div class="container">
+      <h3>{{ message }}</h3>
+      <form class="loginform" method="post" action="/login">
+        <h1>Login</h1>
+        <inputbox>
+          <label>Username:</label>
+          <input type="text" name="username" />
+        </inputbox>
+        <inputbox>
+          <label>Password:</label>
+          <input type="password" name="password" />
+        </inputbox>
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+  </body>
+</html>
