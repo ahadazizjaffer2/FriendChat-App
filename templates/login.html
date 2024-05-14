@@ -8,23 +8,40 @@
       rel="stylesheet"
       href="{{ url_for('static', filename='style.css') }}"
     />
+    <link
+      rel="icon"
+      type="image/png"
+      href="{{ url_for('static', filename='favicon.png') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
   </head>
   <body>
     <nav>
-      <a href="/"><button>Back</button></a>
+      <a href="/">
+        <!-- <button class="back">Back</button> -->
+        <i
+          style="font-size: 40px"
+          class="fa fa-arrow-circle-left"
+          aria-hidden="true"
+        ></i>
+      </a>
     </nav>
     <div class="container">
+      <img class="logo" src="{{ url_for('static', filename='logo.png') }}" />
       <h3>{{ message }}</h3>
       <form class="loginform" method="post" action="/login">
         <h1>Login</h1>
-        <inputbox>
+        <div class="inputbox">
           <label>Username:</label>
-          <input type="text" name="username" />
-        </inputbox>
-        <inputbox>
+          <input type="username" name="username" />
+        </div>
+        <div class="inputbox">
           <label>Password:</label>
           <input type="password" name="password" />
-        </inputbox>
+        </div>
         <button type="submit">Submit</button>
       </form>
     </div>
