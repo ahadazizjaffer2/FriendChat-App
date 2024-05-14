@@ -1,9 +1,15 @@
+:root{
+    --logo-blue: #464fea;
+    --bg-blue: #050521;
+}
+
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     user-select: none;
     color: #f1f1f1;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 /* Homepage */
@@ -11,25 +17,25 @@
 body {
     margin: 0;
     padding: 0; 
-    font-family: 'Poppins', sans-serif;
-    background-color: #050521;
+    background-color: var(--bg-blue);
 }
 .outer {
     display: flex;
-    min-height: 100vh;
+    /* min-height: 100vh; */
 }
 .left-side {
     flex: 70%;
-    background-color: #f0f0f0;
+    background-color: #ffffff;
     display: flex;
     justify-content: center;
     align-items: center;
     overflow: hidden;
+    height: 100vh;
 }
 .right-side {
     flex: 30%;
     /* background-color: #333; */
-    background-color: #050521;
+    background-color: var(--bg-blue);
     color: #fff;
     display: flex;
     flex-direction: column;
@@ -38,15 +44,13 @@ body {
     padding: 20px;
     
 }
-.logo {
-    /* width: 200px; */
+.right-side .logo {
     width: 70%;
-    /* margin: 30px; */
 }
 .leftbg{
     width: 100%;
     object-fit: cover;
-    height: 100vh;
+    /* height: 100vh; */
 }
 .buttons {
     display: flex;
@@ -56,7 +60,7 @@ body {
 }
 button {
     padding: 10px 20px;
-    background-color: #464fea;
+    background-color: var(--logo-blue);
     color: #fff;
     border: none;
     border-radius: 5px;
@@ -71,51 +75,40 @@ button {
     font-size: 18px;
     padding: 0px 25px;
 }
-
-/* Login Page */
-
-/* .container{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    align-content: center;
-    height: 90vh;
-}
-.loginform{
-    background-color: #f0f0f0;
-    width: 500px;
-    height: 500px;
-    color: black;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    align-content: center;
-    justify-content: center;
-}
-.loginform input{
-    width: 400px;
-    height: 30px;
-} */
-
-* {
+.text h3{
     margin: 0;
-    padding: 0;
-    box-sizing: border-box;
 }
 
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
+@media screen and (max-width: 1200px) {
+    .right-side{
+        flex: 50%;
+    }
 }
-
+@media screen and (max-width: 800px) {
+    .right-side{
+        flex: 80%;
+    }
+}
+@media screen and (max-width: 700px) {
+    .left-side{
+        display: none;
+    }
+    .right-side{
+        flex: 100%;
+        height: 100vh;
+    }
+    .right-side .logo{
+        width: 200px;
+    }
+}
 nav {
     padding: 10px;
-    background-color: #333;
+    background-color: var(--bg-blue);
 }
 
 nav button {
     padding: 8px 12px;
-    background-color: #464fea;
+    background-color: var(--logo-blue);
     color: #fff;
     border: none;
     border-radius: 5px;
@@ -127,44 +120,52 @@ nav button {
 .container {
     max-width: 400px;
     margin: 20px auto;
-    padding: 20px;
-    background-color: #fff;
+    padding: 35px;
+    background-color: rgba(255, 255, 255, 0.2);
     border-radius: 8px;
+    border: 1px solid #fff;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+.container .logo{
+    width: 200px;
+    margin: 0px auto;
+    margin-bottom: 40px;
+    display: block;
 }
 
 h3 {
     margin-bottom: 20px;
     text-align: center;
 }
-
 .loginform h1 {
     margin-bottom: 20px;
     font-size: 24px;
     text-align: center;
 }
 
-inputbox {
-    margin-bottom: 20px;
+.inputbox {
+    margin-bottom: 25px;
 }
 
-inputbox label {
+.inputbox label {
     display: block;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
     font-weight: bold;
 }
 
-inputbox input {
+.inputbox input {
     width: 100%;
     padding: 8px;
     border: 1px solid #ccc;
     border-radius: 5px;
+    color:#050521;
+    font-size: 15px;
 }
 
 button[type="submit"] {
     width: 100%;
     padding: 10px;
-    background-color: #464fea;
+    background-color: var(--logo-blue);
     color: #fff;
     border: none;
     border-radius: 5px;
@@ -173,8 +174,13 @@ button[type="submit"] {
     font-weight: 600;
     text-decoration: none;
     transition: background-color 0.3s ease;
+    margin: 0;
 }
 
 button[type="submit"]:hover {
-    background-color: #5785db;
+    background-color: #212ad8;
+}
+.fa{
+    color: var(--logo-blue);
+    margin: 10px;
 }
