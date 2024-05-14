@@ -6,20 +6,56 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link
       rel="stylesheet"
-      href="{{ url_for('static', filename='style.css') }}"
+      href="{{ url_for('static', filename='dashboard style.css') }}"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      href="{{ url_for('static', filename='favicon.png') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
     />
   </head>
   <body>
-    <h1>Edit Room</h1>
-    <h3>{{ message }}</h3>
-    <form method="post">
-      <label>Room Name:</label>
-      <input type="text" name="room_name" value="{{ room.name }}" />
-      <br />
-      <label>Members:</label>
-      <input type="text" name="members" value="{{ room_members_str }}" />
-      <br />
-      <button type="submit">Submit</button>
-    </form>
+    <nav>
+      <div class="navcontainer">
+        <img
+          class="logo"
+          src="{{ url_for('static', filename='logo-left.png') }}"
+        />
+        {% if current_user.is_authenticated %}
+        <a href="/logout"><button class="logoutbtn">Logout</button></a>
+        {% endif %}
+      </div>
+    </nav>
+    <div class="outerlayer">
+      <div class="innerlayer">
+        <div class="heading" style="justify-content: flex-start; gap: 40px">
+          <a href="/rooms/{{room._id}}">
+            <i
+              style="font-size: 40px"
+              class="fa fa-arrow-circle-left"
+              aria-hidden="true"
+            ></i>
+          </a>
+          <h1>Edit Room</h1>
+        </div>
+        <h3>{{ message }}</h3>
+        <form class="createroomform" method="post">
+          <div class="inputbox">
+            <label>Room Name:</label>
+            <input type="text" name="room_name" value="{{ room.name }}" />
+          </div>
+          <div class="inputbox">
+            <label>Members:</label>
+            <input type="text" name="members" value="{{ room_members_str }}" />
+            <span>(Separate by comma)</span>
+          </div>
+          <button type="submit">Submit</button>
+        </form>
+      </div>
+    </div>
   </body>
 </html>
