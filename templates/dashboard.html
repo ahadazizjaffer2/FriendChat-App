@@ -36,7 +36,10 @@
     <div class="outerlayer">
       <div class="innerlayer">
         <h1>Dashboard</h1>
-        <h>Hi {{current_user.username}}</h>
+        <p style="padding: 10px 5px">
+          Username: {{current_user.username}} <br />
+          Number of rooms joined: {{rooms|length}}
+        </p>
         {% if current_user.is_authenticated %}
         <div class="roomsheading">
           <h4>Rooms</h4>
