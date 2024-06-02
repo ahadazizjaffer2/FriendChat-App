@@ -4,7 +4,7 @@ from user import User
 from datetime import datetime
 from bson import ObjectId
 
-client = MongoClient("mongodb+srv://ahadaziz:ahadaziz@chatapp.o10qq6h.mongodb.net/?retryWrites=true&w=majority&appName=ChatApp")
+client = MongoClient("MONGODBURI")
 
 chat_db = client.get_database("ChatDB")
 users_collection = chat_db.get_collection("Users")
@@ -16,8 +16,6 @@ messages_collection = chat_db.get_collection("Messages")
 def save_user(username, email, password):
     password_hash = generate_password_hash(password)
     users_collection.insert_one({'_id': username, 'email': email, 'password': password_hash})
-
-# save_user("ahad", "ahad@gmail.com", "ahad123")
 
 def get_user(username):
     user_data = users_collection.find_one({'_id': username})
@@ -82,14 +80,3 @@ def get_messages(room_id):
     for m in messages:
         m['created_at'] = m['created_at'].strftime("%d %b, %H:%M")
     return messages
-    # return list(messages_collection.find({'room_id': room_id}))
-
-# MESSAGE_FETCH_LIMIT = 3
-
-# def get_messages(room_id, page=0):
-#     offset = page * MESSAGE_FETCH_LIMIT
-#     messages = list(
-#         messages_collection.find({'room_id': room_id}).sort('_id', DESCENDING).limit(MESSAGE_FETCH_LIMIT).skip(offset))
-#     for message in messages:
-#         message['created_at'] = message['created_at'].strftime("%d %b, %H:%M")
-#     return messages[::-1]
