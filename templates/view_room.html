@@ -29,28 +29,33 @@
           class="logo"
           src="{{ url_for('static', filename='logo-left.png') }}"
         />
-        <a href="{{ url_for('logout', room_id=room._id) }}"
-          ><button class="logoutbtn">Logout</button></a
-        >
+        {% if current_user.is_authenticated %}
+        <a href="/logout">
+          <button class="logoutbtn">
+            <i class="bx bx-log-out bx-flip-horizontal"></i></button
+        ></a>
+        {% endif %}
       </div>
     </nav>
     <div class="outerlayer">
       <div class="innerlayer">
         <div class="heading">
-          <a href="/dashboard">
-            <i
-              style="font-size: 40px"
-              class="fa fa-arrow-circle-left"
-              aria-hidden="true"
-            ></i>
-          </a>
-          <div style="display: flex; align-items: center; gap: 10px">
-            <h1>Chat Room: {{ room.name }}</h1>
-            {% if room.created_by == current_user.username %}
-            <a href="{{ url_for('edit_room', room_id=room._id)}}"
-              ><i class="bx bxs-edit"></i
-            ></a>
-            {% endif %}
+          <div style="display: flex; gap: 30px">
+            <a href="/dashboard">
+              <i
+                style="font-size: 30px"
+                class="fa fa-arrow-circle-left"
+                aria-hidden="true"
+              ></i>
+            </a>
+            <div style="display: flex; align-items: center; gap: 10px">
+              <h1>Chat Room: {{ room.name }}</h1>
+              {% if room.created_by == current_user.username %}
+              <a href="{{ url_for('edit_room', room_id=room._id)}}"
+                ><i class="bx bxs-edit"></i
+              ></a>
+              {% endif %}
+            </div>
           </div>
           <div class="members">
             <h3>Members:</h3>
@@ -92,6 +97,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.5/socket.io.js"></script>
   <script>
     const socket = io.connect("http://127.0.0.1:5000");
+    // const socket = io.connect("");
 
     socket.on("connect", function () {
       socket.emit("join_room", {
