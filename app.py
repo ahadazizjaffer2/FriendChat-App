@@ -2,13 +2,11 @@ from flask import Flask, render_template, request, redirect, url_for
 from flask_login import LoginManager, login_user, login_required, logout_user, current_user
 from flask_socketio import SocketIO, join_room, leave_room
 from pymongo.errors import DuplicateKeyError
-from bson.json_util import dumps
 from datetime import datetime
 from flask_cors import CORS
 
 
-from db import get_user, save_user, get_rooms_for_user, get_room, is_room_member, get_room_members, add_room_members, \
-                            remove_room_members, update_room, is_room_admin, save_room, save_message, get_messages
+from db import get_user, save_user, get_rooms_for_user, get_room, is_room_member, get_room_members, add_room_members, remove_room_members, update_room, is_room_admin, save_room, save_message, get_messages
 
 
 app = Flask(__name__)
@@ -138,17 +136,14 @@ def view_room(room_id):
     if room and is_room_member(room_id, current_user.username):
         room_members = get_room_members(room_id)
         messages = get_messages(room_id)
-        return render_template('view_room.html', username=current_user.username, room=room, room_members=room_members,
-                               messages=messages)
+        return render_template('view_room.html', username=current_user.username, room=room, room_members=room_members, messages=messages)
     else:
         return "Room not found", 404
 
 
 @socketio.on('send_message')
 def handle_send_message_event(data):
-    app.logger.info("{} has sent message to the room {}: {}".format(data['username'],
-                                                                    data['room'],
-                                                                    data['message']))
+    app.logger.info("{} has sent message to the room {}: {}".format(data['username'], data['room'], data['message']))
     data['created_at'] = datetime.now().strftime("%d %b, %H:%M")
     save_message(data['room'], data['message'], data['username'])
     socketio.emit('receive_message', data, room=data['room'])
@@ -171,7 +166,6 @@ def handle_leave_room_event(data):
 @login_manager.user_loader
 def load_user(username):
     return get_user(username)
-
 
 if __name__ == '__main__':
     socketio.run(app, debug=True)
