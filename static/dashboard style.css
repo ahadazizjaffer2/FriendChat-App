@@ -1,7 +1,7 @@
 :root{
     --logo-blue: #464fea;
-    --dark-blue: #050521;
-    --dash-bg: #C2D9FF;
+    --dark-blue: #fcfcfc;
+    --dash-bg: #fcfcfc;
 }
 
 *{
@@ -9,7 +9,6 @@
     padding: 0;
     box-sizing: border-box;
     user-select: none;
-    color: var(--dark-blue);
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 body{
@@ -18,8 +17,6 @@ body{
 
 nav {
     padding: 10px;
-    /* position: fixed;
-    width: 100%; */
     background-color: var(--dark-blue);
 }
 button {
@@ -34,39 +31,59 @@ button {
     text-decoration: none;
 }
 .navcontainer{
-    max-width: 1200px;
+    max-width: 1000px;
     height: auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin: 0 auto;
+    padding: 0 30px;
 }
 
 .navcontainer .logo{
     width: 250px;
     margin: 5px 0;
-    /* margin-bottom: 40px; */
     display: block;
 }
 .outerlayer{
     padding: 10px;
 }
 .innerlayer{
-    max-width: 1200px;
+    max-width: 1000px;
     margin: 10px auto;
+    padding: 0 30px;
 }
 .fa{
     margin: 0;
 }
 
+.roomsheading{
+    display: flex;
+    margin-top: 30px;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+.roomsheading a{
+    color: black;
+}
+.roomsheading div{
+    width: 86%;
+    border: 1px solid #c5c5c5;
+}
+
 .roomscontainer{
     width: auto;
     display: flex;
-    /* justify-content: space-between; */
     padding: 30px 0;
     align-items: center;
     gap: 20px;
     flex-wrap: wrap;
+}
+
+.roomscontainer a{
+    color: white;
+    font-weight: 600;
 }
 .roomcard{
     list-style: none;
@@ -74,23 +91,24 @@ button {
 .roomcard a{
     background-color: var(--logo-blue);
     text-align: center;
-    padding: 20px;
-    /* margin: 20px; */
+    padding: 10px 20px;
     border-radius: 5px;
     text-decoration: none;
     font-size: 20px;
-    /* font-weight: bold; */
+    border: 2px solid black;
 }
 .logoutbtn{
-    background-color: #FF204E;
+    background-color: white;
+    color: var(--logo-blue);
     font-size: 18px;
+    margin: 0;
+    padding: 0;
 }
 h1{
-    font-size: 40px;
+    font-size: 36px;
 }
 h4{
-    margin-top: 20px;
-    font-size: 30px;
+    font-size: 24px;
 }
 
 /* Create Room */
@@ -115,8 +133,12 @@ h4{
     padding: 8px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    color:#050521;
+    color:black;
+    background-color: #f0f0f0;
     font-size: 15px;
+}
+.inputbox input:focus{
+    background-color: white;
 }
 .createroomform{
     padding: 20px 0;
@@ -135,20 +157,20 @@ h4{
     transition: background-color 0.3s ease;
     margin: 0;
 }
-
 .createroomform button[type="submit"]:hover {
     background-color: #212ad8;
 }
 .message-container {
     display: flex;
     flex-direction: column;
-    /* gap: 10px; */
-    border: 1px solid #fff;
+    border: 1px solid #ccc;
     padding: 10px;
     overflow-y: auto;
-    max-height: calc(100vh - 230px);
+    height: calc(100vh - 235px);
+    background: #f0f0f0;
+    scrollbar-width: thin;
+    scrollbar-color: black #eee;
 }
-
 .message {
     margin-bottom: 10px;
     padding: 10px;
@@ -156,44 +178,51 @@ h4{
 
 .message.sent {
     align-self: flex-end;
-    background-color: #56b8ff;
     border-radius: 10px 10px 0px 10px;
+    background-color: #464fea;
 }
 
 .message.received {
     align-self: flex-start;
-    background-color: #56ff60;
+    background-color: #00cfff;
     border-radius: 10px 10px 10px 0px;
 }
 .joinroom{
     align-self: center;
-    background-color: #FBF8DD;
+    background-color: lawngreen;
     margin-bottom: 10px;
     padding: 10px;
     border-radius: 5px;
 }
 .leftroom{
     align-self: center;
-    background-color: #DD5746;
+    background-color: #ff672f;
     margin-bottom: 10px;
     padding: 10px;
     border-radius: 5px;
 }
 .message-text {
-    font-size: 18px; /* Adjust the font size as needed */
+    font-size: 18px;
+    color: whitesmoke;
 }
 
 .message-info {
-    font-size: 14px; /* Adjust the font size as needed */
-    color: #888; /* Adjust the color as needed */
+    font-size: 14px;
+    color: black;
 }
 
 .heading{
     display: flex;
     gap: 30px;
+    padding: 10px;
     margin-bottom: 10px;
+    color: black;
     align-items: center;
     justify-content: space-between;
+}
+.heading a{
+    color: black;
+    align-content: center;
 }
 .members{
     display: flex;
@@ -210,7 +239,6 @@ h4{
     margin: 10px 0;
     display: flex;
 }
-
 .newmessage label {
     display: block;
     margin-bottom: 10px;
@@ -220,14 +248,27 @@ h4{
     width:90%;
     padding: 8px;
     border: 1px solid #ccc;
-    border-radius: 5px;
-    color:#050521;
+    border-radius: 5px 0px 0px 5px;
+    color:black;
+    background-color: #f0f0f0;
     font-size: 15px;
+    outline: none;
+}
+.newmessage input:focus {
+    background-color: white;
+    border: 1px solid var(--logo-blue);
 }
 .newmessage button{
     width: 10%;
     margin: 0;
+    border-radius: 0px 5px 5px 0px;
 }
 .bx{
     font-size: 30px;
+} 
+.alert{
+    color: red;
+}
+.editcontainer{
+    padding: 10px;
 }
