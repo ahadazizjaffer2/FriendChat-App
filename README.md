@@ -1,1 +1,1 @@
-# FriendChat-App
+# FriendChat App
