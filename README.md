@@ -4,7 +4,7 @@
 
 ## Overview
 
-The Real-Time Chat Application is a web-based platform that facilitates real-time communication between users in designated chat rooms. It includes features such as user authentication, room creation and management, and real-time messaging using Socket-IO Library.
+This Real-Time Chat Application is a web-based platform that facilitates real-time communication between users in designated chat rooms. It includes features such as user authentication, room creation and management, and real-time messaging using Socket-IO Library.
 
 ## Features
 
